@@ -1,7 +1,13 @@
 from math import log
+from os import remove
+from time import time
 
 
 def primes_up_to(limit):
+    """
+    This function gathers a list of the primes up to the limit either from a
+    previously calculated file or via fresh calculation.
+    """
     # print 'Calculating primes up to {}...'.format(limit)
     try:
         primes_file = open("primes.txt", "r+")
@@ -30,6 +36,7 @@ def primes_up_to(limit):
 
 
 def prime_count(limit):
+    """ This is an implementation of the pi function """
     primes = primes_up_to(limit)
     for x in range(2, limit + 1):
         if x % 1000 == 0:
@@ -39,4 +46,9 @@ def prime_count(limit):
             print 'At x={} the pi(x) is {} and x/log(x) is {} with difference {}'.format(x, pi, logx, pi - logx)
 
 
-prime_count(1000000)
+n = 100000
+started = time()
+primes_up_to(n)
+finished = time()
+print 'primes_up_to calculated up to {} in {} seconds.'.format(n, finished - started)
+# remove('primes.txt')
