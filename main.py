@@ -35,6 +35,16 @@ def primes_up_to(limit):
     return primes
 
 
+"""
+n = 100000
+started = time()
+primes_up_to(n)
+finished = time()
+print 'primes_up_to calculated up to {} in {} seconds.'.format(n, finished - started)
+# remove('primes.txt')
+"""
+
+
 def prime_count(limit):
     """ This is an implementation of the pi function """
     primes = primes_up_to(limit)
@@ -46,9 +56,24 @@ def prime_count(limit):
             print 'At x={} the pi(x) is {} and x/log(x) is {} with difference {}'.format(x, pi, logx, pi - logx)
 
 
-n = 100000
-started = time()
-primes_up_to(n)
-finished = time()
-print 'primes_up_to calculated up to {} in {} seconds.'.format(n, finished - started)
-# remove('primes.txt')
+"""
+prime_count(10000)
+"""
+
+
+def zeta(s, terms=3):
+    """
+    This is an approximation of the zeta function to the specified number of termsself.
+    """
+    sum = 0
+    statement = ''
+    for x in range(1, terms + 1):
+        # print 'in loop, sum is {}, x is {}, s is {}'.format(sum, x, s)
+        sum = sum + (1 / float(x ** s))
+        statement = statement + '1/{} + '.format(float(x ** s))
+        print '{} is the sum after {} terms'.format(sum, x)
+    # print statement + '... = {}'.format(sum)
+    return sum
+
+
+zeta(2.718281828, 10000)
